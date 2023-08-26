@@ -1,0 +1,16 @@
+//My custom theme that could probably use a lot more work...
+
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$my-app-primary: mat.define-palette(mat.$blue-grey-palette);
+$my-app-accent: mat.define-palette(mat.$grey-palette, A200, A100, A400);
+$my-app-warn: mat.define-palette(mat.$orange-palette);
+
+$my-light-theme: mat.define-light-theme((
+    color: (
+        primary: $my-app-primary,
+        accent: $my-app-accent,
+        warn: $my-app-warn,
+    ),
+));
