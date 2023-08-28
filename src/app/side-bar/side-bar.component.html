@@ -1,12 +1,12 @@
-<mat-drawer-container class="strategy-container" autosize>
-    <mat-drawer #drawer class="strategy-sidenav">
-        <mat-radio-group>
+<mat-drawer-container class="strategy-container" autosize [hasBackdrop]="false">
+    <mat-drawer #drawer class="strategy-sidenav" mode="side">
+        <mat-radio-group class="radio-buttons">
             <mat-radio-button>A* Strategy</mat-radio-button>
             <mat-radio-button>Djikstra's Algorithm</mat-radio-button>
         </mat-radio-group>
     </mat-drawer>
 
-    <div>
-        <button type="button" mat-flat-button color="warn" (click)="drawer.toggle()">Open Sidenav</button>
-    </div>
+    <button class="middle-button" mat-icon-button type="button" color="primary" (click)="drawer.toggle()">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
 </mat-drawer-container>
