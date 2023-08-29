@@ -1,7 +1,7 @@
 .strategy-container {
     width: 400px;
-    height: 400px;
-    
+    height: 100%;
+    background-color: transparent;
     border-right: 1px #555;
 }
 
@@ -13,5 +13,6 @@
 }
 
 .middle-button {
-    margin-top: 180px;
+    margin-top: 50%;
+    margin-bottom: auto;
 }
