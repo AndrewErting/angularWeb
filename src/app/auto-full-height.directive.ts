@@ -9,8 +9,8 @@ export class AutoFullHeightDirective implements AfterViewInit {
     private element: ElementRef,
     private renderer: Renderer2
   ) { 
-    const windowHeight = window.innerHeight;
-    const calculatedHeight = '${windowHeight}px';
+    const windowHeight = window.innerHeight - 64;
+    const calculatedHeight = `${windowHeight}px`;
     this.renderer.setStyle(this.element.nativeElement, 'height', calculatedHeight);
   }
 
