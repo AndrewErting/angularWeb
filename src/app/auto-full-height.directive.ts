@@ -1,18 +1,32 @@
-import { Directive, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    Renderer2,
+    AfterViewInit,
+    HostListener,
+} from '@angular/core';
 
 @Directive({
-  selector: '[appAutoFullHeight]'
+    selector: '[appAutoFullHeight]',
 })
 export class AutoFullHeightDirective implements AfterViewInit {
+    @HostListener('window:resize') onresize() {
+        this.resize();
+    }
 
-  constructor(
-    private element: ElementRef,
-    private renderer: Renderer2
-  ) { 
-    const windowHeight = window.innerHeight - 64;
-    const calculatedHeight = `${windowHeight}px`;
-    this.renderer.setStyle(this.element.nativeElement, 'height', calculatedHeight);
-  }
+    resize(): void {
+        const windowHeight = window.innerHeight - 64;
+        const calculatedHeight = `${windowHeight}px`;
+        this.renderer.setStyle(
+            this.element.nativeElement,
+            'height',
+            calculatedHeight
+        );
+    }
 
-  ngAfterViewInit(): void {  }
+    constructor(private element: ElementRef, private renderer: Renderer2) {
+        this.resize();
+    }
+
+    ngAfterViewInit(): void {}
 }
