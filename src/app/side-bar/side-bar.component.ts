@@ -8,7 +8,7 @@ declare function openNav(): void;
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  onClick() {
+  openNav() {
     const elem = document.getElementById("pfSidenav");
     if(!elem) { 
       alert("Early return");
@@ -16,6 +16,17 @@ export class SideBarComponent {
     }
     else{
       elem.style.width = "250px";
+    }
+  }
+  
+  closeNav() {
+    const elem = document.getElementById("pfSidenav");
+    if(!elem) { 
+      alert("Early return");
+      return;
+    }
+    else{
+      elem.style.width = "0px";
     }
   }
 }

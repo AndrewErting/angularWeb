@@ -14,13 +14,17 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         this.resize();
     }
 
+    constructor(private element: ElementRef, private renderer: Renderer2) {
+        this.resize();
+    }
+
     resize(): void {
         var sideBarHeight: any;
         var heightString: string;
         const elem = document.getElementById("pfSidenav");
 
         if (!elem) {
-            heightString = '400px';
+            heightString = '20px';
             return;
         } else {
             sideBarHeight = elem.clientHeight;
@@ -36,8 +40,5 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         );
     }
 
-    constructor(private element: ElementRef, private renderer: Renderer2) {
-        this.resize();
-    }
     ngAfterViewInit(): void {}
 }
