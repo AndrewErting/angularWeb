@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
+
+declare function openNav(): void;
 
 @Component({
   selector: 'app-side-bar',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  
+  onClick() {
+    const elem = document.getElementById("pfSidenav");
+    if(!elem) { 
+      alert("Early return");
+      return;
+    }
+    else{
+      elem.style.width = "250px";
+    }
+  }
 }

@@ -17,11 +17,13 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
     resize(): void {
         var sideBarHeight: any;
         var heightString: string;
+        const elem = document.getElementById("pfSidenav");
 
-        if (!document.getElementById('side-bar')) {
+        if (!elem) {
             heightString = '400px';
+            return;
         } else {
-            sideBarHeight = document.getElementById('side-bar')?.clientHeight;
+            sideBarHeight = elem.clientHeight;
             sideBarHeight =
                 sideBarHeight / 2 - this.element.nativeElement.offsetHeight / 2;
             heightString = `${sideBarHeight}px`;
