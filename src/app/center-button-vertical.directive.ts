@@ -10,6 +10,9 @@ import {
     selector: '[appCenterButtonVertical]',
 })
 export class CenterButtonVerticalDirective implements AfterViewInit {
+
+    private domElement: HTMLElement;
+
     @HostListener('window:resize') onresize() {
         this.resize();
     }
@@ -23,9 +26,9 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         } else {
             sideBarHeight = document.getElementById('side-bar')?.clientHeight;
             sideBarHeight =
-                sideBarHeight / 2 - this.element.nativeElement.offsetHeight / 2;
+                sideBarHeight / 2 - this.domElement.clientHeight / 2;
             heightString = `${sideBarHeight}px`;
-        }
+        }        
 
         this.renderer.setStyle(
             this.element.nativeElement,
@@ -35,7 +38,8 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
     }
 
     constructor(private element: ElementRef, private renderer: Renderer2) {
+        this.domElement = this.element.nativeElement as HTMLElement;
         this.resize();
     }
-    ngAfterViewInit(): void {}
+    ngAfterViewInit(): void { this.resize(); }
 }

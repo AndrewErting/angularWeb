@@ -1,14 +1,27 @@
-<mat-drawer-container appAutoFullHeight id="side-bar" class="strategy-container" [hasBackdrop]="false">
+<mat-drawer-container
+    appAutoFullHeight
+    id="side-bar"
+    class="strategy-container"
+    [hasBackdrop]="false"
+>
     <mat-drawer #drawer mode="side">
         <mat-radio-group appCenterButtonVertical class="radio-buttons">
-
-            <mat-radio-button value="false">A* Strategy</mat-radio-button>
-            <mat-radio-button value="false">Djikstra's Algorithm</mat-radio-button>
-        
+            <mat-radio-button value="false" color="primary"
+                >A* Strategy</mat-radio-button
+            >
+            <mat-radio-button value="false" color="primary"
+                >Djikstra's Algorithm</mat-radio-button
+            >
         </mat-radio-group>
     </mat-drawer>
 
-    <button mat-icon-button type="button" color="primary" (click)="drawer.toggle()" appCenterButtonVertical>
+    <button
+        mat-icon-button
+        type="button"
+        color="primary"
+        (click)="drawer.toggle()"
+        appCenterButtonVertical
+    >
         <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
 </mat-drawer-container>

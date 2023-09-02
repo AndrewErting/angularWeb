@@ -28,5 +28,5 @@ export class AutoFullHeightDirective implements AfterViewInit {
         this.resize();
     }
 
-    ngAfterViewInit(): void {}
+    ngAfterViewInit(): void { this.resize(); }
 }
