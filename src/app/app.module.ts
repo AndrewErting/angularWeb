@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { AutoFullHeightDirective } from './auto-full-height.directive';
 import { CenterButtonVerticalDirective } from './center-button-vertical.directive';
+import { CenterExpandButtonDirective } from './center-expand-button.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CenterButtonVerticalDirective } from './center-button-vertical.directiv
     TopBarComponent,
     SideBarComponent,
     AutoFullHeightDirective,
-    CenterButtonVerticalDirective
+    CenterButtonVerticalDirective,
+    CenterExpandButtonDirective
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 .strategy-container {
-    width: 400px;
+    width: 100%;
     background-color: transparent;
     border-right: 1px #555;
 }
@@ -7,6 +7,19 @@
 .radio-buttons {
     display: flex;
     flex-direction: column;
-    vertical-align: center;
+    vertical-align: middle;
     margin-right: 10px;
+}
+
+.super-cool-canvas {
+    width: 1000px;
+    height: 800px;
+    border: 1px;
+    border-style: solid  #555;
+    position: relative;
+}
+
+.expand-dong {
+    position: relative;
+    bottom: 400px;
 }

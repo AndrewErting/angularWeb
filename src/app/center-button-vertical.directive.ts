@@ -39,7 +39,6 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
 
     constructor(private element: ElementRef, private renderer: Renderer2) {
         this.domElement = this.element.nativeElement as HTMLElement;
-        this.resize();
     }
     ngAfterViewInit(): void { this.resize(); }
 }
