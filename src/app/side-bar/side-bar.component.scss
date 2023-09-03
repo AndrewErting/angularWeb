@@ -12,14 +12,11 @@
 }
 
 .super-cool-canvas {
-    width: 1000px;
+    width: 1500px;
     height: 800px;
     border: 1px;
-    border-style: solid  #555;
+    border-style: solid; 
+    border-color: #555;
     position: relative;
-}
-
-.expand-dong {
-    position: relative;
-    bottom: 400px;
+    overflow: nowrap;
 }
