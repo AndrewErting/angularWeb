@@ -16,15 +16,15 @@
 */
 
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
+    height: 100%;
+    width: 0;
     margin-top: 64px;
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    position: fixed;
+    z-index: 1;
+    top: 0;
     left: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: 0.25s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-x: hidden;
+    transition: 0.25s;
 }
 
 .radio-buttons {
@@ -32,4 +32,10 @@
     flex-direction: column;
     vertical-align: center;
     margin-right: 10px;
+    white-space: nowrap;
+}
+
+.close-button {
+    margin-left: 70%;
+    margin-top: 20px;
 }

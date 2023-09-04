@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 @use "@angular/material" as mat;
-@use "./styles/themes/light";
+@use "./styles/themes/typography.scss";
+@import "./styles/themes/light";
+@import "./styles/themes/dark";
 
-@include mat.all-component-themes(light.$my-light-theme);
-@include mat.typography-hierarchy(light.$my-typography);
+@include mat.core-theme($my-dark-theme);
+@include mat.all-component-themes($my-dark-theme);
 
 @include mat.core();
 

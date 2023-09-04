@@ -1,16 +1,15 @@
-//My custom theme that could probably use a lot more work...
-
 @use 'sass:map';
 @use '@angular/material' as mat;
 @use 'src/app/side-bar/_side-bar_theme.scss' as side-bar;
+@use 'src/app/_app.component.scss' as app;
 @use "typography.scss";
 @import 'src/styles/themes/my-palettes.scss';
 
-$my-app-primary: mat.define-palette($md-mygreenpalette);
-$my-app-accent: mat.define-palette($md-mywhitepalette, A200, A100, A400);
+$my-app-primary: mat.define-palette($md-mydarkgreenpalette);
+$my-app-accent: mat.define-palette($md-mygreypalette, A200, A100, A400);
 $my-app-warn: mat.define-palette(mat.$orange-palette);
 
-$my-light-theme: mat.define-light-theme((
+$my-dark-theme: mat.define-dark-theme((
     typography: typography.$my-typography,
     color: (
         primary: $my-app-primary,
@@ -19,4 +18,5 @@ $my-light-theme: mat.define-light-theme((
     )
 ));
 
-@include side-bar.theme($my-light-theme);
+@include side-bar.theme($my-dark-theme);
+@include app.theme($my-dark-theme);

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, Renderer2, HostListener } from '@angular/core';
 
 declare function openNav(): void;
 
@@ -29,4 +29,12 @@ export class SideBarComponent {
       elem.style.width = "0px";
     }
   }
+
+  reason = '';
+
+  close(reason: string) {
+    this.reason = reason;
+    this.closeNav();
+  }
+  
 }
