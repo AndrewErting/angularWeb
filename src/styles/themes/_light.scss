@@ -70,14 +70,27 @@ $md-mycyanpalette: (
     )
 );
 
+
+$my-typography: mat.define-typography-config(
+    $font-family: '"Barlow", sans-serif',
+    $headline-1: mat.define-typography-level(112px, 112px, 600, $letter-spacing: -0.05em),
+    $headline-2: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.05em),
+    $headline-3: mat.define-typography-level(28px, 28px, 300, $letter-spacing: -0.05em),
+    $headline-4: mat.define-typography-level(24px, 24px, 300),
+    $headline-5: mat.define-typography-level(20px, 20px, 300),
+    $body-1: mat.define-typography-level(18px, 18px, 400),
+    $body-2: mat.define-typography-level(18px, 18px, 400)
+);
+
 $my-app-primary: mat.define-palette($md-mygreenpalette);
 $my-app-accent: mat.define-palette($md-mycyanpalette, A200, A100, A400);
 $my-app-warn: mat.define-palette(mat.$orange-palette);
 
 $my-light-theme: mat.define-light-theme((
+    typography: $my-typography,
     color: (
         primary: $my-app-primary,
         accent: $my-app-accent,
         warn: $my-app-warn,
-    ),
+    )
 ));
