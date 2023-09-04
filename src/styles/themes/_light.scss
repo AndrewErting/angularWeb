@@ -3,8 +3,75 @@
 @use "sass:map";
 @use "@angular/material" as mat;
 
-$my-app-primary: mat.define-palette(mat.$blue-grey-palette);
-$my-app-accent: mat.define-palette(mat.$grey-palette, A200, A100, A400);
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mygreenpalette: (
+    50 : #e0fee0,
+    100 : #b3fdb3,
+    200 : #80fc80,
+    300 : #4dfb4d,
+    400 : #26fa26,
+    500 : #00f900,
+    600 : #00f800,
+    700 : #00f700,
+    800 : #00f600,
+    900 : #00f500,
+    A100 : #ffffff,
+    A200 : #e8ffe8,
+    A400 : #b5ffb5,
+    A700 : #9cff9c,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-mycyanpalette: (
+    50 : #e0fefe,
+    100 : #b3fdfd,
+    200 : #80fcfc,
+    300 : #4dfbfb,
+    400 : #26fafa,
+    500 : #00f9f9,
+    600 : #00f8f8,
+    700 : #00f7f7,
+    800 : #00f6f6,
+    900 : #00f5f5,
+    A100 : #ffffff,
+    A200 : #e8ffff,
+    A400 : #b5ffff,
+    A700 : #9cffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$my-app-primary: mat.define-palette($md-mygreenpalette);
+$my-app-accent: mat.define-palette($md-mycyanpalette, A200, A100, A400);
 $my-app-warn: mat.define-palette(mat.$orange-palette);
 
 $my-light-theme: mat.define-light-theme((
