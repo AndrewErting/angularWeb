@@ -4,6 +4,9 @@ import {
     Renderer2,
     AfterViewInit,
     HostListener,
+    Input,
+    Output,
+    EventEmitter
 } from '@angular/core';
 
 @Directive({
@@ -11,12 +14,14 @@ import {
 })
 export class CenterButtonVerticalDirective implements AfterViewInit {
     @HostListener('window:resize') onresize() {
-        this.resize();
+        this.changeHeight();
     }
+
+    resize() { this.changeHeight(); }
 
     constructor(private element: ElementRef, private renderer: Renderer2) {  }
 
-    resize(): void {
+    changeHeight(): void {
         var sideBarHeight: any;
         var heightString: string;
         const elem = document.getElementById("pfSidenav");
@@ -38,5 +43,7 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         );
     }
 
-    ngAfterViewInit(): void { this.resize(); }
+    ngAfterViewInit(): void { 
+        this.changeHeight();
+    }
 }

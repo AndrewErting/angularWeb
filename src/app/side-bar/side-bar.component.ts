@@ -8,25 +8,33 @@ declare function openNav(): void;
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
+  size = 56;
+
   openNav() {
-    const elem = document.getElementById("pfSidenav");
-    if(!elem) { 
+    const elem1 = document.getElementById("pfSidenav");
+    const elem2 = document.getElementById("bubble");
+    if(!elem1 || !elem2) { 
       alert("Early return");
       return;
     }
     else{
-      elem.style.width = "250px";
+      elem1.style.width = "250px";
+      elem2.style.height = "0px";
+      elem2.style.width = "0px";
     }
   }
   
   closeNav() {
-    const elem = document.getElementById("pfSidenav");
-    if(!elem) { 
+    const elem1 = document.getElementById("pfSidenav");
+    const elem2 = document.getElementById("bubble");
+    if(!elem1 || !elem2) { 
       alert("Early return");
       return;
     }
     else{
-      elem.style.width = "0px";
+      elem1.style.width = "0px";
+      elem2.style.height = "56px";
+      elem2.style.width = "56px";
     }
   }
 
@@ -36,5 +44,4 @@ export class SideBarComponent {
     this.reason = reason;
     this.closeNav();
   }
-  
 }
