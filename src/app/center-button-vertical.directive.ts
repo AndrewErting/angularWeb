@@ -14,9 +14,7 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         this.resize();
     }
 
-    constructor(private element: ElementRef, private renderer: Renderer2) {
-        this.resize();
-    }
+    constructor(private element: ElementRef, private renderer: Renderer2) {  }
 
     resize(): void {
         var sideBarHeight: any;
@@ -40,5 +38,5 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         );
     }
 
-    ngAfterViewInit(): void {}
+    ngAfterViewInit(): void { this.resize(); }
 }
