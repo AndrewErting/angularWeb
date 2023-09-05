@@ -20,10 +20,10 @@
 -->
 
 <div id="pfSidenav" class="sidenav" appAutoFullHeight>
-    <button mat-fab (click)="closeNav()" class="close-button" color="accent">
+    <button id="close" mat-fab (click)="closeNav()" class="close-button" color="accent">
         <mat-icon>close</mat-icon>
     </button>
-    <mat-radio-group class="radio-buttons" appCenterButtonVertical>
+    <mat-radio-group class="radio-buttons" appCenterButtonVertical bufferedContainer="close">
         <mat-radio-button value="false">A* Strategy</mat-radio-button>
         <mat-radio-button value="false">Djikstra's Algorithm</mat-radio-button>
     </mat-radio-group>
@@ -35,6 +35,7 @@
     color="primary"
     class="expand-button"
     id="bubble"
+    appCenterButtonVertical
 >
     <mat-icon>keyboard_arrow_right</mat-icon>
 </button>

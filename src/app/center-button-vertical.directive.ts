@@ -6,8 +6,9 @@ import {
     HostListener,
     Input,
     Output,
-    EventEmitter
+    EventEmitter,
 } from '@angular/core';
+import { buffer } from 'rxjs';
 
 @Directive({
     selector: '[appCenterButtonVertical]',
@@ -17,24 +18,44 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         this.changeHeight();
     }
 
-    resize() { this.changeHeight(); }
+    @Input() bufferedContainer: string;
 
-    constructor(private element: ElementRef, private renderer: Renderer2) {  }
+    resize() {
+        this.changeHeight();
+    }
+
+    constructor(private element: ElementRef, private renderer: Renderer2) {
+        this.bufferedContainer = '';
+    }
 
     changeHeight(): void {
         var sideBarHeight: any;
         var heightString: string;
-        const elem = document.getElementById("pfSidenav");
+        var bufferHeight: number;
+        const bufferElem = document.getElementById(this.bufferedContainer);
+        const elem = document.getElementById('pfSidenav');
+
+        if (this.bufferedContainer === '' || !bufferElem) {
+            bufferHeight = 0;
+        } else {
+            bufferHeight =
+                bufferElem.offsetHeight +
+                parseInt(bufferElem.style.marginTop.replace(/[px]/, ''));
+        }
 
         if (!elem) {
-            heightString = '20px';
             return;
         } else {
             sideBarHeight = elem.clientHeight;
             sideBarHeight =
-                sideBarHeight / 2 - this.element.nativeElement.offsetHeight / 2;
+                sideBarHeight / 2 -
+                this.element.nativeElement.offsetHeight / 2 -
+                bufferHeight;
             heightString = `${sideBarHeight}px`;
         }
+        console.log('Sidebar Height: ', elem.clientHeight);
+        console.log('Buffer Height: ', bufferHeight);
+        console.log('Calculated Height: ', sideBarHeight);
 
         this.renderer.setStyle(
             this.element.nativeElement,
@@ -43,7 +64,7 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         );
     }
 
-    ngAfterViewInit(): void { 
+    ngAfterViewInit(): void {
         this.changeHeight();
     }
 }
