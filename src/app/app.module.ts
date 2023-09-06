@@ -15,6 +15,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AutoFullHeightDirective } from './auto-full-height.directive';
 import { CenterButtonVerticalDirective } from './center-button-vertical.directive';
 import { OpenSidebarDirective } from './open-sidebar.directive';
+import { PathfindingPaneComponent } from './pathfinding-pane/pathfinding-pane.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import { OpenSidebarDirective } from './open-sidebar.directive';
     SideBarComponent,
     AutoFullHeightDirective,
     CenterButtonVerticalDirective,
-    OpenSidebarDirective
+    OpenSidebarDirective,
+    PathfindingPaneComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +40,23 @@ import { OpenSidebarDirective } from './open-sidebar.directive';
     MatMenuModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatRadioModule
+    MatRadioModule,
+    MatButtonToggleModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    this.matIconRegistry.addSvgIcon(
+      "rounded-square",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/square_black_24dp.svg")
+    );
+
+    this.matIconRegistry.addSvgIcon(
+      "ink-eraser",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/ink_eraser_FILL0_wght0_GRAD0_opszNaN.svg")
+    );
+  }
+}

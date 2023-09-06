@@ -1,0 +1,40 @@
+.pf-canvas {
+
+}
+
+.divider {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mode-widget {
+    border-radius: 10px;
+    margin-right: 25px;
+}
+
+.type-widget {
+    border-radius: 10px;
+}
+.drawButton {
+    width: 75px;
+}
+
+.eraseButton {
+    width: 75px;
+}
+
+.obstacle {
+    font-size: 20px;
+    color: #000000;
+}
+
+.start {
+    font-size: 20px;
+    color: #00ff00;
+}
+
+.end {
+    font-size: 20px;
+    color: #ff0000
+}
