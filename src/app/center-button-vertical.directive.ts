@@ -38,9 +38,7 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
         if (this.bufferedContainer === '' || !bufferElem) {
             bufferHeight = 0;
         } else {
-            bufferHeight =
-                bufferElem.offsetHeight +
-                parseInt(bufferElem.style.marginTop.replace(/[px]/, ''));
+            bufferHeight = bufferElem.clientHeight;
         }
 
         if (!elem) {
@@ -53,10 +51,6 @@ export class CenterButtonVerticalDirective implements AfterViewInit {
                 bufferHeight;
             heightString = `${sideBarHeight}px`;
         }
-        console.log('Sidebar Height: ', elem.clientHeight);
-        console.log('Buffer Height: ', bufferHeight);
-        console.log('Calculated Height: ', sideBarHeight);
-
         this.renderer.setStyle(
             this.element.nativeElement,
             'margin-top',

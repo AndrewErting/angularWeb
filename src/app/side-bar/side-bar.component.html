@@ -20,10 +20,22 @@
 -->
 
 <div id="pfSidenav" class="sidenav" appAutoFullHeight>
-    <button id="close" mat-fab (click)="closeNav()" class="close-button" color="accent">
-        <mat-icon>close</mat-icon>
-    </button>
-    <mat-radio-group class="radio-buttons" appCenterButtonVertical bufferedContainer="close">
+    <div id="close">
+        <button
+            mat-fab
+            (click)="closeNav()"
+            class="close-button"
+            color="accent"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <mat-radio-group
+        class="radio-buttons"
+        appCenterButtonVertical
+        bufferedContainer="close"
+        color="primary"
+    >
         <mat-radio-button value="false">A* Strategy</mat-radio-button>
         <mat-radio-button value="false">Djikstra's Algorithm</mat-radio-button>
     </mat-radio-group>

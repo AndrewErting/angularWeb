@@ -19,6 +19,7 @@ export class SideBarComponent {
     }
     else{
       elem1.style.width = "250px";
+      elem2.style.transition = "0.25s";
       elem2.style.height = "0px";
       elem2.style.width = "0px";
     }
