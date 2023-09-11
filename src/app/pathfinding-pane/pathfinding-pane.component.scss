@@ -1,5 +1,14 @@
-.pf-canvas {
+.canvas-container {
+    display: flex;
+    flex-direction: column;
+}
 
+.pf-canvas {
+    width: 1000px;
+    height: 600px;
+    border-radius: 10px;
+    border-color: #ff0000;
+    border-style: solid;
 }
 
 .divider {

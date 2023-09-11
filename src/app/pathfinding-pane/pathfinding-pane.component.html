@@ -1,26 +1,29 @@
-<canvas class="pf-canvas"></canvas>
-<div class="divider">
-    <div>
-        <mat-button-toggle-group class="mode-widget">
-            <mat-button-toggle class="drawButton">
-                <mat-icon class="drawIcon">edit</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle class="eraseButton">
-                <mat-icon class="eraseIcon" svgIcon="ink-eraser"></mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-    </div>
-    <div>
-        <mat-button-toggle-group class="type-widget">
-            <mat-button-toggle>
-                <mat-icon class="obstacle">square</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle>
-                <mat-icon class="start">square</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle>
-                <mat-icon class="end">square</mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
+<div class="canvas-container">
+    <canvas appCenterHorizontal class="pf-canvas"></canvas>
+
+    <div class="divider">
+        <div>
+            <mat-button-toggle-group class="mode-widget">
+                <mat-button-toggle class="drawButton">
+                    <mat-icon class="drawIcon">edit</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle class="eraseButton">
+                    <mat-icon class="eraseIcon" svgIcon="ink-eraser"></mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div>
+            <mat-button-toggle-group class="type-widget">
+                <mat-button-toggle>
+                    <mat-icon class="obstacle">square</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle>
+                    <mat-icon class="start">square</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle>
+                    <mat-icon class="end">square</mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
     </div>
 </div>

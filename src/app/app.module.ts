@@ -20,6 +20,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { CenterHorizontalDirective } from './center-horizontal.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     AutoFullHeightDirective,
     CenterButtonVerticalDirective,
     OpenSidebarDirective,
-    PathfindingPaneComponent
+    PathfindingPaneComponent,
+    CenterHorizontalDirective
   ],
   imports: [
     BrowserModule,
