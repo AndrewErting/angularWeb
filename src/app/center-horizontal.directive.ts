@@ -4,14 +4,13 @@ import {
   Renderer2,
   AfterViewInit,
   HostListener,
-  Input,
-  Output,
-  EventEmitter, } from '@angular/core';
+  Input
+ } from '@angular/core';
 
 @Directive({
   selector: '[appCenterHorizontal]'
 })
-export class CenterHorizontalDirective {
+export class CenterHorizontalDirective implements AfterViewInit {
   @HostListener('window:resize') onresize() {
     this.changeMargin();
 }

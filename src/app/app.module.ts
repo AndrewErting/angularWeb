@@ -21,6 +21,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { CenterHorizontalDirective } from './center-horizontal.directive';
+import { CanvasComponent } from './canvas/canvas.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CenterHorizontalDirective } from './center-horizontal.directive';
     CenterButtonVerticalDirective,
     OpenSidebarDirective,
     PathfindingPaneComponent,
-    CenterHorizontalDirective
+    CenterHorizontalDirective,
+    CanvasComponent
   ],
   imports: [
     BrowserModule,
