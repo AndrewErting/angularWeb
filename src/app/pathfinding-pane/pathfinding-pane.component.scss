@@ -8,6 +8,12 @@
     box-shadow: 6px 6px 10px #0000008e;
 }
 
+.physical-canvas {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
 .bottom-segment {
     height: auto;
     width: 1240px;
