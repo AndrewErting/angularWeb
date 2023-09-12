@@ -1,0 +1,42 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+    $color-config: mat.get-color-config($theme);
+
+    $primary-palette: map.get($color-config, 'primary');
+    $accent-palette: map.get($color-config, 'accent');
+    $warning-palette: map.get($color-config, 'warning');
+
+    .canvas-container {
+        background-color: mat.get-color-from-palette($primary-palette, 800);
+    }
+
+    .pf-canvas {
+        border-color: mat.get-color-from-palette($primary-palette, 600);
+    }
+
+    .divider {
+        background-color: mat.get-color-from-palette($accent-palette, 500);
+    }
+
+    .bottom-segment {
+        background-color: mat.get-color-from-palette($primary-palette, 600);
+    }
+}
+
+@mixin typography($theme) {
+    $typography-config: mat.get-typography-config($theme);
+}
+
+@mixin theme($theme) {
+    $color-config: mat.get-color-config($theme);
+    @if $color-config != null {
+        @include color($theme);
+    }
+
+    $typography-config: mat.get-typography-config($theme);
+    @if $typography-config != null {
+        @include typography($theme);
+    }
+}

@@ -2,11 +2,25 @@
 
 @use "@angular/material" as mat;
 @use "./styles/themes/typography.scss";
+@use 'src/app/side-bar/_side-bar_theme.scss' as side-bar;
+@use 'src/app/pathfinding-pane/_pathfinding-pane_theme.scss' as pf-pane;
 @import "./styles/themes/light";
 @import "./styles/themes/dark";
 
-@include mat.core-theme($my-dark-theme);
-@include mat.all-component-themes($my-dark-theme);
+$current-theme: $my-dark-theme;
+
+@media (prefers-color-scheme: light) {
+    $current-theme: $my-light-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+    $current-theme: $my-dark-theme;
+}
+
+@include mat.core-theme($current-theme);
+@include mat.all-component-themes($current-theme);
+@include side-bar.theme($current-theme);
+@include pf-pane.theme($current-theme);
 
 @include mat.core();
 

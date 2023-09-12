@@ -4,17 +4,29 @@
     width: min-content;
     height: min-content;
     margin: 50px;
-    background-color: #000000;
     border-radius: 50px;
+    box-shadow: 6px 6px 10px #0000008e;
+}
+
+.bottom-segment {
+    height: auto;
+    width: 1240px;
+    border-radius: 0px 0px 50px 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+
 }
 
 .pf-canvas {
     width: 1200px;
     height: 600px;
-    border-radius: 10px;
-    border-width: 10px;
-    margin: 50px;
-    border-color: #ff0000;
+    border-radius: 20px 20px 0px 0px;
+    border-width: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 2px;
     border-style: solid;
 }
 
@@ -22,25 +34,25 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #00ff00;
-    border-radius: 10px;
+    border-radius: 15px;
     width: min-content;
-    margin-bottom: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .mode-widget {
-    border-radius: 10px;
+    border-radius: 15px;
+    margin-left: 5px;
     margin-right: 25px;
-    margin-left: 20px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
 .type-widget {
-    border-radius: 10px;
-    margin-right: 20px;
+    border-radius: 15px;
+    margin-right: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
 }
