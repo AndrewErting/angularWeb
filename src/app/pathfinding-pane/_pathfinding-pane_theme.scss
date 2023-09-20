@@ -13,7 +13,7 @@
     }
 
     .canvas-window {
-        border-color: mat.get-color-from-palette($primary-palette, 600);
+        background-color: mat.get-color-from-palette($primary-palette, 600);
     }
 
     .divider {

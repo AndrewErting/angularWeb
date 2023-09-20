@@ -11,7 +11,6 @@ $color-config: null !default;
     $warning-palette: map.get($color-config, 'warning');
 
     .my-canvas {
-        color: mat.get-color-from-palette($primary-palette, 600);
         background-color: mat.get-color-from-palette($primary-palette, 800);
     }
 }
