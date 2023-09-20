@@ -22,6 +22,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { CenterHorizontalDirective } from './center-horizontal.directive';
 import { CanvasComponent } from './canvas/canvas.component';
+import { BufferMarginDirective } from './buffer-margin.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CanvasComponent } from './canvas/canvas.component';
     OpenSidebarDirective,
     PathfindingPaneComponent,
     CenterHorizontalDirective,
-    CanvasComponent
+    CanvasComponent,
+    BufferMarginDirective
   ],
   imports: [
     BrowserModule,

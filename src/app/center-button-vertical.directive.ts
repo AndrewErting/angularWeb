@@ -5,8 +5,6 @@ import {
     AfterViewInit,
     HostListener,
     Input,
-    Output,
-    EventEmitter,
 } from '@angular/core';
 import { buffer } from 'rxjs';
 
