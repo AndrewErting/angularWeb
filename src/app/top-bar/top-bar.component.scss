@@ -1,4 +1,8 @@
 .top-bar {
-    height: 5%;
+    height: min-content;
     z-index: 5;
+}
+
+.menu-button {
+    margin: 4px;
 }
