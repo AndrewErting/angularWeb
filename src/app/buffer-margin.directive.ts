@@ -18,23 +18,22 @@ export class BufferMarginDirective implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        var bufferElem;
-        var bufferHeight;
+        const bufferElem = document.getElementById(this.bufferedContainer);
+        const elem = this.element.nativeElement;
 
-        bufferElem = document.getElementById(this.bufferedContainer);
-        console.log(bufferElem?.style.height);
+        var bufferHeight;
 
         if (this.bufferedContainer === '' || !bufferElem) {
             bufferHeight = 0;
             console.log('Early return @ buffer-margin');
         } else {
-            bufferHeight = bufferElem.clientHeight;
+            bufferHeight = bufferElem.offsetHeight;
         }
 
         console.log(`${bufferHeight}px`);
         this.renderer.setStyle(
             this.element.nativeElement,
-            'margin-top',
+            'top',
             `${bufferHeight}px`
         );
     }
