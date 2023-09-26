@@ -54,8 +54,6 @@ export class CanvasComponent implements AfterViewInit {
     paintNodes() {}
 
     drawLines() {
-        console.log('Allegedly drawing lines...');
-
         this.ctx!.strokeStyle = getComputedStyle(
             this.lines.nativeElement
         ).getPropertyValue('background-color');
@@ -66,12 +64,20 @@ export class CanvasComponent implements AfterViewInit {
         );
 
         this.ctx!.lineWidth = 1;
-
         this.ctx!.beginPath();
-        for (let i = 0; i < 10; i++) {
-            this.ctx!.moveTo(0, 20 * i);
-            this.ctx!.lineTo(this.htmlCanvas!.clientWidth, 20 * i);
+
+        this.ctx!.translate(0.5, 0.5);
+        for (let x = 0; x < 10; x++) {
+            this.ctx!.moveTo(10 * x, 0);
+            this.ctx!.lineTo(10 * x, this.htmlCanvas!.clientHeight);
         }
+
+        for (let y = 0; y < 10; y++) {
+            this.ctx!.moveTo(0, 10 * y);
+            this.ctx!.lineTo(this.htmlCanvas!.clientWidth, 10 * y);
+        }
+
+        this.ctx!.setTransform(1, 0, 0, 1, 0, 0);
         this.ctx!.stroke();
         this.ctx!.closePath();
     }
