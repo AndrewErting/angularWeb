@@ -3,6 +3,11 @@
 
 $color-config: null !default;
 
+@function getColor($n){
+    $color: mat.get-color-from-palette($primary-palette, $n);
+    @return $color;
+}
+
 @mixin color($theme) {
     $color-config: mat.get-color-config($theme);
 
@@ -12,6 +17,13 @@ $color-config: null !default;
 
     .my-canvas {
         background-color: mat.get-color-from-palette($primary-palette, 800);
+    }
+
+    .lines {
+        background-color: mat.get-color-from-palette($primary-palette, 500);
+    }
+    .bg {
+        background-color: mat.get-color-from-palette($primary-palette, 900);
     }
 }
 

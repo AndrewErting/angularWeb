@@ -2,11 +2,14 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'app-canvas',
-    template: '<canvas #canvas id="canvas" class="my-canvas"></canvas>',
+    template:
+        '<canvas #viewChildHook id="canvas" class="my-canvas"><span #line class="lines"></span><span #back class="bg"></span></canvas>',
     styleUrls: ['./canvas.component.scss'],
 })
 export class CanvasComponent implements AfterViewInit {
-    @ViewChild('canvas') public canvas!: ElementRef;
+    @ViewChild('viewChildHook', { static: true }) canvas!: ElementRef;
+    @ViewChild('line', { static: true }) lines!: ElementRef;
+    @ViewChild('back', { static: true }) back!: ElementRef;
     private htmlCanvas!: HTMLElement | null;
     private ctx!: CanvasRenderingContext2D | null;
 
@@ -31,20 +34,45 @@ export class CanvasComponent implements AfterViewInit {
         this.drawLines();
     }
 
-    fillBackground() {}
+    fillBackground() {
+        this.ctx!.fillStyle = getComputedStyle(
+            this.back.nativeElement
+        ).getPropertyValue('background-color');
+        this.ctx?.fillRect(
+            0,
+            0,
+            this.htmlCanvas!.clientWidth,
+            this.htmlCanvas!.clientHeight
+        );
+        console.log(
+            (this.ctx!.fillStyle = getComputedStyle(
+                this.back.nativeElement
+            ).getPropertyValue('background-color'))
+        );
+    }
 
     paintNodes() {}
 
     drawLines() {
         console.log('Allegedly drawing lines...');
-        this.ctx!.beginPath();
-        this.ctx!.strokeStyle = 'red';
+
+        this.ctx!.strokeStyle = getComputedStyle(
+            this.lines.nativeElement
+        ).getPropertyValue('background-color');
+        console.log(
+            (this.ctx!.fillStyle = getComputedStyle(
+                this.lines.nativeElement
+            ).getPropertyValue('background-color'))
+        );
+
+        this.ctx!.lineWidth = 1;
 
         this.ctx!.beginPath();
-        this.ctx!.moveTo(20, 20);
-        this.ctx!.lineTo(20, 100);
-        this.ctx!.lineTo(70, 100);
-        this.ctx!.strokeStyle = 'red';
+        for (let i = 0; i < 10; i++) {
+            this.ctx!.moveTo(0, 20 * i);
+            this.ctx!.lineTo(this.htmlCanvas!.clientWidth, 20 * i);
+        }
         this.ctx!.stroke();
+        this.ctx!.closePath();
     }
 }

@@ -4,6 +4,7 @@
 @use "./styles/themes/typography.scss";
 @use 'src/app/side-bar/_side-bar_theme.scss' as side-bar;
 @use 'src/app/pathfinding-pane/_pathfinding-pane_theme.scss' as pf-pane;
+@use 'src/app/canvas/_canvas_theme.scss' as canvas;
 @import "./styles/themes/light";
 @import "./styles/themes/dark";
 
@@ -21,6 +22,7 @@ $current-theme: $my-dark-theme;
 @include mat.all-component-themes($current-theme);
 @include side-bar.theme($current-theme);
 @include pf-pane.theme($current-theme);
+@include canvas.theme($current-theme);
 
 @include mat.core();
 

@@ -8,7 +8,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
@@ -25,44 +25,51 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { BufferMarginDirective } from './buffer-margin.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TopBarComponent,
-    SideBarComponent,
-    AutoFullHeightDirective,
-    CenterButtonVerticalDirective,
-    OpenSidebarDirective,
-    PathfindingPaneComponent,
-    CenterHorizontalDirective,
-    CanvasComponent,
-    BufferMarginDirective
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatRadioModule,
-    MatButtonToggleModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        TopBarComponent,
+        SideBarComponent,
+        AutoFullHeightDirective,
+        CenterButtonVerticalDirective,
+        OpenSidebarDirective,
+        PathfindingPaneComponent,
+        CenterHorizontalDirective,
+        CanvasComponent,
+        BufferMarginDirective,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatMenuModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatRadioModule,
+        MatButtonToggleModule,
+        HttpClientModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { 
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
-    this.matIconRegistry.addSvgIcon(
-      "rounded-square",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/square_black_24dp.svg")
-    );
+export class AppModule {
+    constructor(
+        private matIconRegistry: MatIconRegistry,
+        private domSanitizer: DomSanitizer
+    ) {
+        this.matIconRegistry.addSvgIcon(
+            'rounded-square',
+            this.domSanitizer.bypassSecurityTrustResourceUrl(
+                '../assets/square_black_24dp.svg'
+            )
+        );
 
-    this.matIconRegistry.addSvgIcon(
-      "ink-eraser",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/ink_eraser_FILL0_wght0_GRAD0_opszNaN.svg")
-    );
-  }
+        this.matIconRegistry.addSvgIcon(
+            'ink-eraser',
+            this.domSanitizer.bypassSecurityTrustResourceUrl(
+                '../assets/ink_eraser_FILL0_wght0_GRAD0_opszNaN.svg'
+            )
+        );
+    }
 }
