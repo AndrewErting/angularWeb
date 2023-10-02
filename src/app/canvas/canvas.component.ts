@@ -65,14 +65,14 @@ export class CanvasComponent implements AfterViewInit {
 
         this.ctx!.lineWidth = 1;
         this.ctx!.beginPath();
+        this.ctx!.translate(-0.5, -0.5);
 
-        this.ctx!.translate(0.5, 0.5);
-        for (let x = 0; x < 10; x++) {
+        for (let x = 0; x < 30; x++) {
             this.ctx!.moveTo(10 * x, 0);
             this.ctx!.lineTo(10 * x, this.htmlCanvas!.clientHeight);
         }
 
-        for (let y = 0; y < 10; y++) {
+        for (let y = 0; y < 15; y++) {
             this.ctx!.moveTo(0, 10 * y);
             this.ctx!.lineTo(this.htmlCanvas!.clientWidth, 10 * y);
         }
