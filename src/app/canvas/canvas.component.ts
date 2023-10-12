@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    HostListener,
+    ViewChild,
+} from '@angular/core';
 
 @Component({
     selector: 'app-canvas',
@@ -12,6 +18,15 @@ export class CanvasComponent implements AfterViewInit {
     @ViewChild('back', { static: true }) back!: ElementRef;
     private htmlCanvas!: HTMLElement | null;
     private ctx!: CanvasRenderingContext2D | null;
+    private mouseEntered: boolean = false;
+
+    @HostListener('mouseenter') onMouseEnter() {
+        this.mouseEntered = true;
+    }
+
+    @HostListener('mouseleave') onMouseLeave() {
+        this.mouseEntered = false;
+    }
 
     ngAfterViewInit(): void {
         const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
@@ -31,6 +46,9 @@ export class CanvasComponent implements AfterViewInit {
     paintArray() {
         this.fillBackground();
         this.paintNodes();
+        if(this.mouseEntered){
+            this.paintIndicator();
+        }
         this.drawLines();
     }
 
@@ -52,6 +70,13 @@ export class CanvasComponent implements AfterViewInit {
     }
 
     paintNodes() {}
+
+    paintIndicator() {
+        var mouseX;
+        var mouseY;
+
+        
+    }
 
     drawLines() {
         this.ctx!.strokeStyle = getComputedStyle(
