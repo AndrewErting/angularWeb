@@ -9,7 +9,7 @@ import {
 @Component({
     selector: 'app-canvas',
     template:
-        '<canvas #viewChildHook id="canvas" class="my-canvas"><span #line class="lines"></span><span #back class="bg"></span><span #indicator class="indic"></span></canvas>',
+        '<canvas #viewChildHook id="canvas" class="my-canvas" width="600px" height="300px"><span #line class="lines"></span><span #back class="bg"></span><span #indicator class="indic"></span></canvas>',
     styleUrls: ['./canvas.component.scss'],
 })
 export class CanvasComponent implements AfterViewInit {
@@ -24,10 +24,19 @@ export class CanvasComponent implements AfterViewInit {
 
     private xPosScale: number = 0;
     private yPosScale: number = 0;
-    private stepValue: number = 10;
+    private stepValue: number = 2git 0;
+
+    private drawing = false;
+    private erasing = false;
+
+    private array!: number[][];
+    private rows: number;
+    private cols: number;
 
     constructor(elem: ElementRef) {
         this.host = elem;
+        this.rows = 15;
+        this.cols = 30;
     }
 
     @HostListener('mouseenter') onMouseEnter() {
@@ -36,6 +45,15 @@ export class CanvasComponent implements AfterViewInit {
 
     @HostListener('mouseleave') onMouseLeave() {
         this.mouseEntered = false;
+    }
+
+    @HostListener('mousedown', ['$event']) onMouseDown(event: MouseEvent) {
+        if (event.button == 1) {
+            this.drawing = true;
+        }
+        if (event.button == 2) {
+            this.erasing = true;
+        }
     }
 
     @HostListener('mousemove', ['$event']) onMousemove(event: MouseEvent) {
@@ -50,6 +68,9 @@ export class CanvasComponent implements AfterViewInit {
             this.yPosScale =
                 (event.clientY - boundY) /
                 this.canvas.nativeElement.clientHeight;
+
+            if (this.drawing) {
+            }
             this.paintArray();
         }
     }
@@ -57,6 +78,7 @@ export class CanvasComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
         this.htmlCanvas = document.getElementById('canvas');
+
         if (canvasEl && this.htmlCanvas) {
             this.ctx = canvasEl.getContext('2d');
             this.ctx?.scale(1, 1);
@@ -87,14 +109,16 @@ export class CanvasComponent implements AfterViewInit {
         );
     }
 
+    private xIndex = 0;
+    private yIndex = 0;
     paintNodes() {}
 
     paintIndicator() {
         if (this.mouseEntered) {
-            var xIndex = Math.floor(
+            this.xIndex = Math.floor(
                 (this.xPosScale * this.ctx!.canvas.width) / this.stepValue
             );
-            var yIndex = Math.floor(
+            this.yIndex = Math.floor(
                 (this.yPosScale * this.ctx!.canvas.height) / this.stepValue
             );
 
@@ -102,8 +126,8 @@ export class CanvasComponent implements AfterViewInit {
                 this.indicator.nativeElement
             ).getPropertyValue('background-color');
             this.ctx?.fillRect(
-                xIndex * this.stepValue,
-                yIndex * this.stepValue,
+                this.xIndex * this.stepValue,
+                this.yIndex * this.stepValue,
                 this.stepValue,
                 this.stepValue
             );
@@ -118,12 +142,12 @@ export class CanvasComponent implements AfterViewInit {
         this.ctx!.beginPath();
         this.ctx!.translate(-0.5, -0.5);
 
-        for (let x = 0; x < 30; x++) {
+        for (let x = 0; x < this.cols; x++) {
             this.ctx!.moveTo(this.stepValue * x, 0);
             this.ctx!.lineTo(this.stepValue * x, this.htmlCanvas!.clientHeight);
         }
 
-        for (let y = 0; y < 15; y++) {
+        for (let y = 0; y < this.rows; y++) {
             this.ctx!.moveTo(0, this.stepValue * y);
             this.ctx!.lineTo(this.htmlCanvas!.clientWidth, this.stepValue * y);
         }
