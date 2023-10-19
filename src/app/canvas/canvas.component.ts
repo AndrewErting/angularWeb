@@ -24,7 +24,7 @@ export class CanvasComponent implements AfterViewInit {
 
     private xPosScale: number = 0;
     private yPosScale: number = 0;
-    private stepValue: number = 2git 0;
+    private stepValue: number = 20;
 
     private drawing = false;
     private erasing = false;
