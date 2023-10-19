@@ -29,7 +29,7 @@ export class CanvasComponent implements AfterViewInit {
     private drawing = false;
     private erasing = false;
 
-    private array!: number[][];
+    private array: number[][] = [];
     private rows: number;
     private cols: number;
 
@@ -37,6 +37,13 @@ export class CanvasComponent implements AfterViewInit {
         this.host = elem;
         this.rows = 15;
         this.cols = 30;
+
+        for (let y = 0; y < this.cols; y++) {
+            this.array[y] = [];
+            for (let x = 0; x < this.rows; x++) {
+                this.array[y][x] = 0;
+            }
+        }
     }
 
     @HostListener('mouseenter') onMouseEnter() {
@@ -48,7 +55,7 @@ export class CanvasComponent implements AfterViewInit {
     }
 
     @HostListener('mousedown', ['$event']) onMouseDown(event: MouseEvent) {
-        if (event.button == 1) {
+        if (event.button == 0) {
             this.drawing = true;
         }
         if (event.button == 2) {
@@ -56,12 +63,24 @@ export class CanvasComponent implements AfterViewInit {
         }
     }
 
+    @HostListener('mouseup', ['$event']) onMouseUp(event: MouseEvent) {
+        if (event.button == 0) {
+            this.drawing = false;
+        }
+        if (event.button == 2) {
+            this.erasing = false;
+        }
+    }
+
+    private xIndex = 0;
+    private yIndex = 0;
     @HostListener('mousemove', ['$event']) onMousemove(event: MouseEvent) {
         if (this.mouseEntered) {
             var rect = this.htmlCanvas!.getBoundingClientRect();
             var boundX = rect.left;
             var boundY = rect.top;
 
+            //Get the scalar value...
             this.xPosScale =
                 (event.clientX - boundX) /
                 this.canvas.nativeElement.clientWidth;
@@ -69,7 +88,18 @@ export class CanvasComponent implements AfterViewInit {
                 (event.clientY - boundY) /
                 this.canvas.nativeElement.clientHeight;
 
-            if (this.drawing) {
+            //Apply scalar to width and divide for floored value...
+            this.xIndex = Math.floor(
+                (this.xPosScale * this.ctx!.canvas.width) / this.stepValue
+            );
+            this.yIndex = Math.floor(
+                (this.yPosScale * this.ctx!.canvas.height) / this.stepValue
+            );
+
+            if (this.drawing == true) {
+                this.array[this.yIndex][this.xIndex] = 1;
+            } else if (this.erasing == true) {
+                this.array[this.yIndex][this.xIndex] = 0;
             }
             this.paintArray();
         }
@@ -109,19 +139,24 @@ export class CanvasComponent implements AfterViewInit {
         );
     }
 
-    private xIndex = 0;
-    private yIndex = 0;
-    paintNodes() {}
+    paintNodes() {
+        for (let y = 0; y < this.cols; y++) {
+            for (let x = 0; x < this.rows; x++) {
+                if (this.array[y][x] == 1) {
+                    this.ctx!.fillStyle = 'blue';
+                    this.ctx!.fillRect(
+                        x * this.stepValue,
+                        y * this.stepValue,
+                        this.stepValue,
+                        this.stepValue
+                    );
+                }
+            }
+        }
+    }
 
     paintIndicator() {
         if (this.mouseEntered) {
-            this.xIndex = Math.floor(
-                (this.xPosScale * this.ctx!.canvas.width) / this.stepValue
-            );
-            this.yIndex = Math.floor(
-                (this.yPosScale * this.ctx!.canvas.height) / this.stepValue
-            );
-
             this.ctx!.fillStyle = getComputedStyle(
                 this.indicator.nativeElement
             ).getPropertyValue('background-color');
