@@ -30,7 +30,6 @@ export class BufferMarginDirective implements AfterViewInit {
             bufferHeight = bufferElem.offsetHeight;
         }
 
-        console.log(`${bufferHeight}px`);
         this.renderer.setStyle(
             this.element.nativeElement,
             'top',

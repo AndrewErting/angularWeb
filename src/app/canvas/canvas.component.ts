@@ -21,8 +21,8 @@ export class CanvasComponent implements AfterViewInit {
     private mouseEntered: boolean = false;
     private host!: ElementRef;
 
-    private xPos: number = 0;
-    private yPos: number = 0;
+    private xPosScale: number = 0;
+    private yPosScale: number = 0;
     private stepValue: number = 10;
 
     constructor(elem: ElementRef) {
@@ -38,15 +38,17 @@ export class CanvasComponent implements AfterViewInit {
     }
 
     @HostListener('mousemove', ['$event']) onMousemove(event: MouseEvent) {
-        if(this.mouseEntered){
+        if (this.mouseEntered) {
             var rect = this.htmlCanvas!.getBoundingClientRect();
             var boundX = rect.left;
             var boundY = rect.top;
 
-            this.xPos = event.clientX - boundX;
-            this.yPos = event.clientY - boundY;
-            console.log("X Pos: ", this.xPos);
-            console.log("Y Pos: ", this.yPos);
+            this.xPosScale =
+                (event.clientX - boundX) /
+                this.canvas.nativeElement.clientWidth;
+            this.yPosScale =
+                (event.clientY - boundY) /
+                this.canvas.nativeElement.clientHeight;
             this.paintArray();
         }
     }
@@ -56,7 +58,7 @@ export class CanvasComponent implements AfterViewInit {
         this.htmlCanvas = document.getElementById('canvas');
         if (canvasEl && this.htmlCanvas) {
             this.ctx = canvasEl.getContext('2d');
-
+            this.ctx?.scale(1, 1);
             this.paintArray();
         } else {
             return;
@@ -66,7 +68,7 @@ export class CanvasComponent implements AfterViewInit {
     paintArray() {
         this.fillBackground();
         this.paintNodes();
-        if(this.mouseEntered){
+        if (this.mouseEntered) {
             this.paintIndicator();
         }
         this.drawLines();
@@ -87,15 +89,21 @@ export class CanvasComponent implements AfterViewInit {
     paintNodes() {}
 
     paintIndicator() {
-        if(this.mouseEntered){
-            var xIndex = Math.floor(this.xPos/this.stepValue);
-            var yIndex = Math.floor(this.yPos/this.stepValue);
-
-            console.log("X Index: ", xIndex);
-            console.log("Y Index: ", yIndex);
+        if (this.mouseEntered) {
+            var xIndex = Math.floor(
+                (this.xPosScale * this.ctx!.canvas.width) / this.stepValue
+            );
+            var yIndex = Math.floor(
+                (this.yPosScale * this.ctx!.canvas.height) / this.stepValue
+            );
 
             this.ctx!.fillStyle = `blue`;
-            this.ctx?.fillRect(xIndex*this.stepValue, yIndex*this.stepValue, this.stepValue, this.stepValue);
+            this.ctx?.fillRect(
+                xIndex * this.stepValue,
+                yIndex * this.stepValue,
+                this.stepValue,
+                this.stepValue
+            );
         }
     }
 
