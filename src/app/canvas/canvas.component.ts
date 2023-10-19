@@ -9,13 +9,14 @@ import {
 @Component({
     selector: 'app-canvas',
     template:
-        '<canvas #viewChildHook id="canvas" class="my-canvas"><span #line class="lines"></span><span #back class="bg"></span></canvas>',
+        '<canvas #viewChildHook id="canvas" class="my-canvas"><span #line class="lines"></span><span #back class="bg"></span><span #indicator class="indic"></span></canvas>',
     styleUrls: ['./canvas.component.scss'],
 })
 export class CanvasComponent implements AfterViewInit {
     @ViewChild('viewChildHook', { static: true }) canvas!: ElementRef;
     @ViewChild('line', { static: true }) lines!: ElementRef;
     @ViewChild('back', { static: true }) back!: ElementRef;
+    @ViewChild('indicator', { static: true }) indicator!: ElementRef;
     private htmlCanvas!: HTMLElement | null;
     private ctx!: CanvasRenderingContext2D | null;
     private mouseEntered: boolean = false;
@@ -97,7 +98,9 @@ export class CanvasComponent implements AfterViewInit {
                 (this.yPosScale * this.ctx!.canvas.height) / this.stepValue
             );
 
-            this.ctx!.fillStyle = `blue`;
+            this.ctx!.fillStyle = getComputedStyle(
+                this.indicator.nativeElement
+            ).getPropertyValue('background-color');
             this.ctx?.fillRect(
                 xIndex * this.stepValue,
                 yIndex * this.stepValue,

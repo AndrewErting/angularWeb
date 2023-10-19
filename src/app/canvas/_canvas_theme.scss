@@ -25,6 +25,9 @@ $color-config: null !default;
     .bg {
         background-color: mat.get-color-from-palette($primary-palette, 900);
     }
+    .indic {
+        background-color: mat.get-color-from-palette($primary-palette, '300-contrast');
+    }
 }
 
 @mixin theme($theme) {
